@@ -154,7 +154,8 @@ export default function CustomerLanding() {
 
         {/* Floating Cart Button */}
         <motion.button
-          className="fixed bottom-6 right-6 z-[999] bg-primary hover:bg-primary/90 text-primary-foreground rounded-full p-4 shadow-glow"
+          className="fixed bottom-6 right-6 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full p-4 shadow-glow"
+          style={{ zIndex: 99999 }}
           onClick={() => setIsCartOpen(true)}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
