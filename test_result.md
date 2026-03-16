@@ -101,3 +101,139 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: "Test the Quick Order restaurant management application with customer landing page and admin panel functionality"
+
+frontend:
+  - task: "Customer Landing Page Hero Section"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/pages/CustomerLanding.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "Initial testing required - Hero section with restaurant name and tagline visibility, View Menu button functionality"
+
+  - task: "Menu Display and Add to Cart"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/pages/CustomerLanding.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "Initial testing required - Menu items grid display, Add to Cart functionality, cart badge updates"
+
+  - task: "Cart Drawer Functionality"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/pages/CustomerLanding.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "Initial testing required - Cart drawer opening, quantity controls, item removal, proceed to checkout"
+
+  - task: "Checkout and Order Placement"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/pages/CustomerLanding.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "Initial testing required - Checkout dialog, table number input, order submission to database"
+
+  - task: "Admin Login and Registration"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/pages/AdminLogin.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "Initial testing required - Login/register tabs, registration with max 3 admin limit, authentication flow"
+
+  - task: "Admin Dashboard Overview"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/pages/AdminDashboard.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "Initial testing required - Dashboard stats, QR code generation, order management, navigation tabs"
+
+  - task: "Menu Management in Admin"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/pages/AdminDashboard.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "Initial testing required - Add/edit/delete menu items, menu item dialog functionality"
+
+  - task: "Settings Management in Admin"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/pages/AdminDashboard.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "Initial testing required - Restaurant settings update, save functionality"
+
+backend:
+  - task: "API Endpoints"
+    implemented: true
+    working: "NA"
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "Backend API endpoints implemented - will be tested through frontend integration"
+
+metadata:
+  created_by: "testing_agent"
+  version: "1.0"
+  test_sequence: 1
+  run_ui: true
+
+test_plan:
+  current_focus:
+    - "Customer Landing Page Hero Section"
+    - "Menu Display and Add to Cart"
+    - "Cart Drawer Functionality"
+    - "Checkout and Order Placement"
+    - "Admin Login and Registration"
+    - "Admin Dashboard Overview"
+    - "Menu Management in Admin"
+    - "Settings Management in Admin"
+  stuck_tasks: []
+  test_all: true
+  test_priority: "sequential"
+
+agent_communication:
+  - agent: "testing"
+    message: "Starting comprehensive testing of Quick Order restaurant management application. Will test customer flow first, then admin functionality."
