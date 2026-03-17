@@ -167,7 +167,7 @@ async def login_admin(login_data: AdminLogin):
     if admin_doc["password"] != login_data.password:
         raise HTTPException(status_code=401, detail="Invalid credentials")
     
-    token = create_token(admin_doc['id'])
+    token = create_token(str(admin_doc['_id']))
     
     return {
         "token": token,
