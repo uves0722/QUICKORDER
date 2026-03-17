@@ -182,13 +182,13 @@ async def login_admin(login_data: AdminLogin):
     token = create_token(str(admin_doc['_id']))
     
     return {
-        "token": token,
-        "admin": AdminResponse(
-            id=str(admin_doc['_id']),
-            username=admin_doc['username'],
-            email=admin_doc['email']
-        )
+    "token": token,
+    "admin": {
+        "id": str(admin_doc['_id']),
+        "username": admin_doc['username'],
+        "email": admin_doc['email']
     }
+}
 @api_router.get("/admin/profile")
 async def get_admin_profile(user=Depends(verify_token)):
     return {
