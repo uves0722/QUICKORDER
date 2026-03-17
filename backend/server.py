@@ -172,7 +172,7 @@ async def login_admin(login_data: AdminLogin):
     return {
         "token": token,
         "admin": AdminResponse(
-            id=admin_doc['id'],
+            id=str(admin_doc['_id']),
             username=admin_doc['username'],
             email=admin_doc['email']
         )
