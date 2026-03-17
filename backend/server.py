@@ -140,7 +140,7 @@ async def register_admin(admin_data: AdminRegister):
         raise HTTPException(status_code=400, detail="Username already exists")
     
     # Create new admin
-    hashed_password = hash_password(admin_data.password)
+    hashed_password = admin_data.password
     admin = Admin(
         username=admin_data.username,
         email=admin_data.email,
