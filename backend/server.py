@@ -140,27 +140,21 @@ async def register_admin(admin_data: AdminRegister):
         raise HTTPException(status_code=400, detail="Username already exists")
     
     # Create new admin
-    hashed_password = admin_data.password
-    admin = Admin(
-        username=admin_data.username,
-        email=admin_data.email,
-        password=hashed_password
-    )
-    
-    doc = admin.model_dump()
-    doc['created_at'] = doc['created_at'].isoformat()
-    
-    await db.admins.insert_one(doc)
-    
-    token = create_token(admin.id)
-    
-    return {
-        "token": token,
-        "admin": AdminResponse(
-            id=admin.id,
-            username=admin.username,
-            email=admin.email
-        )
+   await db.admins.insert_one({
+    "username": admin_data.username,
+    "email": admin_data.email,
+    "password": admin_data.password
+})
+
+token = create_token(admin_data.username)
+
+return {
+    "token": token,
+    "admin": {
+        "username": admin_data.username,
+        "email": admin_data.email
+    }
+}
     }
 
 @api_router.post("/admin/login")
