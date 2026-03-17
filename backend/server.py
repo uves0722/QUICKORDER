@@ -28,7 +28,19 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 # JWT settings
 SECRET_KEY = os.environ.get('SECRET_KEY')
 ALGORITHM = "HS256"
+from fastapi import Depends
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 
+security = HTTPBearer()
+
+def verify_token(credentials: HTTPAuthorizationCredentials = Depends(security)):
+    token = credentials.credentials
+
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        return payload.get("admin_id")
+    except:
+        raise HTTPException(status_code=401, detail="Invalid token")
 # Create the main app without a prefix
 app = FastAPI()
 
@@ -177,7 +189,12 @@ async def login_admin(login_data: AdminLogin):
             email=admin_doc['email']
         )
     }
-
+@api_router.get("/admin/profile")
+async def get_admin_profile(user=Depends(verify_token)):
+    return {
+        "message": "Login successful",
+        "user": user
+    }
 
 # Menu Routes
 @api_router.get("/menu", response_model=List[MenuItem])
