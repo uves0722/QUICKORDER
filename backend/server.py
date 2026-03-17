@@ -155,7 +155,6 @@ return {
         "email": admin_data.email
     }
 }
-    }
 
 @api_router.post("/admin/login")
 async def login_admin(login_data: AdminLogin):
