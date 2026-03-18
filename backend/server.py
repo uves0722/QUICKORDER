@@ -129,10 +129,10 @@ class SettingsUpdate(BaseModel):
 
 # Helper functions
 def hash_password(password: str) -> str:
-    return pwd_context.hash(password)
+    return bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    return pwd_context.verify(plain_password, hashed_password)
+    return bcrypt.checkpw(plain_password.encode(), hashed_password.encode())
 
 def create_token(admin_id: str) -> str:
     return jwt.encode({"admin_id": admin_id}, SECRET_KEY, algorithm=ALGORITHM)
