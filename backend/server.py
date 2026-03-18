@@ -155,7 +155,7 @@ async def register_admin(admin_data: AdminRegister):
     await db.admins.insert_one({
         "username": admin_data.username,
         "email": admin_data.email,
-        "password": admin_data.password
+        "password": hash_password(admin_data.password)
     })
 
     token = create_token(admin_data.username)
@@ -176,7 +176,7 @@ async def login_admin(login_data: AdminLogin):
         raise HTTPException(status_code=401, detail="Invalid credentials")
     
     # Verify password
-    if admin_doc["password"] != login_data.password:
+    if not verify_password(login_data.password, admin_doc["password"]):
         raise HTTPException(status_code=401, detail="Invalid credentials")
     
     token = create_token(str(admin_doc['_id']))
