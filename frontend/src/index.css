@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Premium Restaurant Color Palette - Elegant Dark Gold Theme */
+    --background: 20 14% 8%; /* Deep charcoal #14110F */
+    --foreground: 40 20% 95%; /* Warm ivory #F5F3EE */
+    
+    --card: 20 14% 10%; /* Slightly lighter charcoal */
+    --card-foreground: 40 20% 95%;
+    
+    --popover: 20 14% 10%;
+    --popover-foreground: 40 20% 95%;
+    
+    /* Premium Gold Accent */
+    --primary: 45 90% 60%; /* Luxurious Gold #E8C547 */
+    --primary-foreground: 20 14% 8%;
+    --primary-glow: 45 100% 70%; /* Brighter gold for glows */
+    
+    /* Deep burgundy secondary */
+    --secondary: 0 35% 25%; /* Rich burgundy #5C2E2E */
+    --secondary-foreground: 40 20% 95%;
+    
+    /* Warm accent */
+    --accent: 30 60% 50%; /* Warm amber */
+    --accent-foreground: 20 14% 8%;
+    
+    --muted: 20 14% 15%;
+    --muted-foreground: 40 10% 65%;
+    
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 40 20% 95%;
+    
+    --border: 20 14% 20%;
+    --input: 20 14% 20%;
+    --ring: 45 90% 60%;
+    
+    /* Custom design tokens for premium feel */
+    --gradient-primary: linear-gradient(135deg, hsl(45 90% 60%), hsl(45 100% 70%));
+    --gradient-hero: linear-gradient(135deg, hsl(20 14% 8% / 0.95), hsl(20 14% 8% / 0.85));
+    --gradient-card: linear-gradient(180deg, hsl(20 14% 12%), hsl(20 14% 10%));
+    
+    --shadow-elegant: 0 10px 40px -10px hsl(45 90% 60% / 0.15);
+    --shadow-glow: 0 0 30px hsl(45 100% 70% / 0.25);
+    --shadow-soft: 0 4px 20px hsl(20 14% 4% / 0.4);
+    
+    --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    --radius: 0.75rem;
+  }
+
+  .light {
+    --background: 40 20% 98%; /* Soft cream */
+    --foreground: 20 14% 15%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 20 14% 15%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14% 15%;
+    
+    --primary: 45 90% 50%; /* Deep gold */
+    --primary-foreground: 40 20% 98%;
+    --primary-glow: 45 90% 60%;
+    
+    --secondary: 0 35% 35%;
+    --secondary-foreground: 40 20% 98%;
+    
+    --accent: 30 60% 50%;
+    --accent-foreground: 40 20% 98%;
+    
+    --muted: 40 10% 95%;
+    --muted-foreground: 20 14% 45%;
+    
+    --border: 40 10% 90%;
+    --input: 40 10% 90%;
+    --ring: 45 90% 50%;
+    
+    --shadow-elegant: 0 10px 40px -10px hsl(45 90% 50% / 0.2);
+    --shadow-glow: 0 0 30px hsl(45 90% 60% / 0.3);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-inter;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-playfair;
+  }
+}
+
+@layer utilities {
+  /* Premium text gradients */
+  .text-gradient-gold {
+    background: linear-gradient(135deg, hsl(45 90% 60%), hsl(45 100% 75%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Elegant animations */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  /* Glassmorphism effect */
+  .glass-card {
+    background: hsl(var(--card) / 0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.3);
+  }
+  
+  /* Premium hover effects */
+  .hover-lift {
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-elegant);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.5);
+}
